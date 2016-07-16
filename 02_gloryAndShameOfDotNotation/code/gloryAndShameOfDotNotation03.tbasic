@@ -1,0 +1,66 @@
+uses "console"
+
+type vector3d
+  x as single
+  y as single
+  z As Single
+end type
+
+dim v(1000000) as vector3d
+long  i
+
+hirestimer_init
+quad t1, t2
+
+print "Classic dotted aproach: "
+t1 = hiResTimer_Get
+for i = 1 to countOf(v)
+  v(i).x = 1 * i
+  v(i).y = 2 * i
+  v(i).z = 3 * i
+next
+t2 = hiResTimer_Get
+printL format$((t2 - t1)\1000) + " ms" in 12 ' -- If you wonder, this is forced integer division
+
+'
+dword v_pointer
+dword x_offset  = udt_elementoffset(v(1).x)
+dword y_offset  = udt_elementoffset(v(1).y)
+dword z_offset  = udt_elementoffset(v(1).z)
+'
+
+print "Virtual variable:       "
+t1 = hiResTimer_Get
+
+single x at 0
+single y at 0
+single z at 0
+
+v_pointer = varptr(v(1))
+for i = 1 to countOf(v)
+  setAt(x, v_pointer + x_offset)
+  setAt(y, v_pointer + y_offset)
+  setAt(z, v_pointer + z_offset)
+  x = 1 * i
+  y = 2 * i
+  z = 3 * i
+  
+  v_pointer += sizeOf(vector3d)
+next
+t2 = hiResTimer_Get
+printL format$((t2 - t1)\1000) + " ms" in 14
+
+print "Poking around:          "
+t1 = hiResTimer_Get
+v_pointer = varptr(v(1))
+for i = 1 to countOf(v)
+  poke(single, v_pointer + x_offset, 1 * i)
+  poke(single, v_pointer + y_offset, 2 * i)
+  poke(single, v_pointer + z_offset, 3 * i)
+  
+  v_pointer += sizeOf(vector3d)
+next
+t2 = hiResTimer_Get
+printL format$((t2 - t1)\1000) + " ms" in 10
+
+waitKey

@@ -1,0 +1,49 @@
+uses "console"
+
+type vector3d
+  x as single
+  y as single
+  z As Single
+end type
+
+dim v(3) as vector3d
+
+dword v_pointer
+long  i
+
+printL "Bad practice - try changing order of fields in vector3d" in 12
+v_pointer = varptr(v(1))
+for i = 1 to countof(v)
+  poke(single, v_pointer + 0, 1 * i)
+  poke(single, v_pointer + 4, 2 * i)
+  poke(single, v_pointer + 8, 3 * i)
+  
+  printL v(i).x, v(i).y, v(i).z
+  
+  v_pointer += sizeOf(vector3d)
+next
+
+printL
+
+printL "Good practice - changing the order in vector3d does not affect result" in 10
+dword x_offset  = udt_elementoffset(v(1).x)
+dword y_offset  = udt_elementoffset(v(1).y)
+dword z_offset  = udt_elementoffset(v(1).z)
+
+printL "x offset: " + x_offset
+printL "y offset: " + y_offset
+printL "z offset: " + z_offset
+printL
+
+v_pointer = varptr(v(1))
+for i = 1 to countof(v)
+  poke(single, v_pointer + x_offset, 1 * i)
+  poke(single, v_pointer + y_offset, 2 * i)
+  poke(single, v_pointer + z_offset, 3 * i)
+  
+  printL v(i).x, v(i).y, v(i).z
+  
+  v_pointer += sizeOf(vector3d)
+next
+
+waitKey
