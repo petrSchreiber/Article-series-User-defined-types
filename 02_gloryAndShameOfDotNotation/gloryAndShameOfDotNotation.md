@@ -231,4 +231,4 @@ waitKey
 ##Conclusion
 User defined types provide great flexibility for data modeling, exposed via dot notation, in line with industry expected approach. While this syntactic sugar offers great readability, it has its performance impact.
 
-The article demonstrates possible approach to overcome this limitation for cases, when performance is needed. While the approach is pointer based, it can be made safer by using *UDT_ElementOffset* function, ensuring proper field addressing.
+The article demonstrates possible approach to overcome this limitation for cases when performance is needed. While the approach is pointer based, it can be made safer by using *UDT_ElementOffset* function, ensuring proper field addressing.
