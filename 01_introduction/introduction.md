@@ -1,3 +1,4 @@
+#User defined types #1: Introduction
 *Target audience: beginner, applicable version: 1.9.16.16 and newer*
 
 ThinBASIC is a computer language with roots set in BASIC. The [original](en.wikipedia.org/wiki/Dartmouth_BASIC) BASIC did not asked the user to declare any type for the [variables](www.thinbasic.com/public/products/thinBasic/help/html/variables.htm), it simply stored them as number using [30 bits](www.dartmouth.edu/basicfifty/commands.html) of precision.
@@ -11,14 +12,14 @@ The possible controversy of this approach starts to appear once you realize the 
 
 ThinBASIC takes a different route.
 
-# Numeric data types
+##Numeric data types
 With our interpreter, the choice of numeric [data type](www.thinbasic.com/public/products/thinBasic/help/html/numericvariables.htm) is responsibility of the programmer. While the behavior of other solutions could be mimicked by simply using the *Number* data type, which poses the ability to hold the largest range of values thanks to 80bits of precision, once we move from playful stage to work on real world solutions, using specific types can bring great efficiency advantages.
 
 ThinBASIC, like some other programming languages, offers two kinds of numeric types: integer and floating point. Integer types should be the type of choice whenever you use whole numbers. They are further divided to signed and unsigned.
 
 In case you can afford it memory wise and the range of values is enough for your task, the best size/performance ratio in thinBasic is provided by the *Long* data type, which can be also referenced by its alias *Int32*. It is is signed, 32-bit integer. This is the reason why you may see *Long* being used even in cases, where you would expect *DWord* (or *UInt32*) otherwise. For example as counters in *for* loops, which usually go from 1 up.
 
-#String data types
+##String data types
 Similar level of fine control is given to *String* data types. While *String* itself will do fine in most of the cases, it has its drawbacks. Did you know, for example, that each time you assign value, append or otherwise alter the length, a memory reallocation is performed?
 ```thinbasic
 uses "console"
@@ -84,7 +85,7 @@ end function
 Of course, it is not possible to anticipate the maximum size in all the scenarios, and that is where more complex systems, such as string builders come to play.
 I prepared one such for thinBasic, and you can [download it](www.thinbasic.com/community/showthread.php?12447-StringBuilder-for-ThinBASIC-GitHub&highlight=string+builder) and use in your projects.
 
-#User defined types
+##User defined types
 Imagine a situation. You are about to create a game and you need to store data about a ship cruising through the space. What do we need - position, rotation, maybe health, shields and ammo, right? The data model of this could end up as something like:
 ```thinbasic
 number positionX, positionY, rotation, health, shields, ammo
@@ -141,7 +142,7 @@ end type
 
 ...and voila! We are suddenly at 22 bytes per ship, that is almost 1/3 of the original size.
 
-#Conclusion
+##Conclusion
 We are living in 21st century, we have computers with huge amounts of RAM. That does not mean we should waste it, remember me the next time you will shutdown your browser from task manager Be proud to be in control of the situation, and use the thinBasic language resources to your advantage.
 
 Today we learned that user defined types can be of great help to logically group your variables together, to easily create copies of data models and measure their memory footprint. Stay tuned for more, as there is a lot more of exciting stuff to learn!

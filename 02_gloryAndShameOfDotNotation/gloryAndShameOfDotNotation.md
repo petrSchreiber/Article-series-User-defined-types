@@ -1,10 +1,11 @@
+#User defined types #2: Glory and shame of dot notation
 *Target audience: beginner to intermediate, applicable version: 1.9.16.16 and newer*
 
 The [first article](https://github.com/petrSchreiber/ArticleSeries_UserDefinedTypes/blob/master/01_introduction/introduction.md) in the series provided some basic motivation for usage of user defined types (UDT): their ability to encapsulate multiple fields and straightforward memory consumption tracking.
 
 The second part in the series will introduce you to dot notation, its benefits and pitfalls.
 
-#Dot notation
+##Dot notation
 Designing the data model with UDT is very straightforward, as the first article suggested. Each field of the UDT can be then accessed via dotted syntax:
 ```thinbasic
 type vector2d
@@ -53,7 +54,7 @@ In both cases, the vector3d will be equipped with x, y and z fields.
 The first approach allows specifying even multiple types to inherit fields from.
 The second one allows inheriting from just one specified type, whose fields will be always inserted as first in the new type.
 
-#Memory representation
+##Memory representation
 Another interesting property of user defined types is how they are stored in memory. The following example will give you little hint:
 ```thinbasic
 uses "console"
@@ -227,7 +228,7 @@ waitKey
 ```
 *Download as [gloryAndShameOfDotNotation03.tbasic](https://github.com/petrSchreiber/Article-series-User-defined-types/blob/master/02_gloryAndShameOfDotNotation/code/gloryAndShameOfDotNotation03.tbasic)*
 
-#Conclusion
+##Conclusion
 User defined types provide great flexibility for data modeling, exposed via dot notation, in line with industry expected approach. While this syntactic sugar offers great readability, it has its performance impact.
 
 The article demonstrates possible approach to overcome this limitation for cases, when performance is needed. While the approach is pointer based, it can be made safer by using *UDT_ElementOffset* function, ensuring proper field addressing.
