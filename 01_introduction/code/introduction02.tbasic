@@ -1,0 +1,25 @@
+uses "console"
+
+dim myText as string * 14
+
+printL "Variable address: | Data address: | Content:"
+printMemoryInfo(myText)
+
+myText = "Earth"
+PrintMemoryInfo(myText)
+
+myText = "Venus" ' Same length, no change
+PrintMemoryInfo(myText)
+
+myText = "Earth and Moon"
+PrintMemoryInfo(myText)
+waitkey
+
+function PrintMemoryInfo(byRef stringVariable as string)
+  string stringVariableAddress = hex$(varPtr(stringVariable))
+  string stringDataAddress     = hex$(strPtr(stringVariable))
+  
+  printL lSet$(stringVariableAddress, 20 using " ") +
+         lSet$(stringDataAddress, 16 using " ") +
+         stringVariable  
+end function
