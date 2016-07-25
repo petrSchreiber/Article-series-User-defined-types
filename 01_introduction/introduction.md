@@ -1,7 +1,7 @@
 #User defined types #1: Introduction
 *Target audience: beginner, applicable version: 1.9.16.16 and newer*
 
-ThinBASIC is a computer language with roots set in BASIC. The [original](en.wikipedia.org/wiki/Dartmouth_BASIC) BASIC did not asked the user to declare any type for the [variables](www.thinbasic.com/public/products/thinBasic/help/html/variables.htm), it simply stored them as number using [30 bits](www.dartmouth.edu/basicfifty/commands.html) of precision.
+ThinBASIC is a computer language with roots set in BASIC. The [original](en.wikipedia.org/wiki/Dartmouth_BASIC) BASIC did not ask the user to declare any type for the [variables](www.thinbasic.com/public/products/thinBasic/help/html/variables.htm), it simply stored them as a number using [30 bits](www.dartmouth.edu/basicfifty/commands.html) of precision.
 
 Many of the modern computer languages (Lua, Python, Ruby...) try to mimic this design by hiding the internal variable storage details from the programmer. This approach has the clear advantage of keeping things simple. Number is a number, text is a text. Programmer focuses on the problem instead of implementation. So far so good.
 
